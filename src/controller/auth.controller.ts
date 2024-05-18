@@ -49,7 +49,7 @@ export const login = async (req: Request, res: Response) => {
     if (!isPassMatch) {
       throw new Error("Invalid Credentials");
     }
-    const token = jwt.sign({ user }, "mysecretkey");
+    const token = jwt.sign({ user }, "mysecretkey", { expiresIn: "1h" });
     return res.status(200).send({
       success: true,
       message: "Login Successfull!",
